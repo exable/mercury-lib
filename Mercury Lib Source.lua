@@ -1639,12 +1639,17 @@ function methods:Clear()
     dropdownContainer:tween({Size = UDim2.new(1, -20, 0, 52)}, function()
         for i, v in next, itemContainer.AbsoluteObject:GetChildren() do
             if v.ClassName == "TextButton" then
-                v.TextColor3 = Color3.fromRGB(255, 255, 255)
+                v:Destroy()
             end
         end
     end)
     if open then toggle() end
+    
+    selectedItems = {} -- Clear the selected items table
+    selectedIndices = {} -- Clear the selected indices table
+    selectedCount = 0 -- Reset the selected count
 end
+
 
 	function methods:AddItems(fitems)
 		for i, v in next, fitems do
