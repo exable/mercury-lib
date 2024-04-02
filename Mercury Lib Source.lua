@@ -1633,22 +1633,18 @@ function Library:dropdown(options)
 		end
 	end
 
-function methods:Clear()
-    table.clear(items)
-    itemContainer:tween{Size = UDim2.new(1, -10, 0, 0)}
-    dropdownContainer:tween({Size = UDim2.new(1, -20, 0, 52)}, function()
-        for i, v in next, itemContainer.AbsoluteObject:GetChildren() do
-            if v.ClassName == "TextButton" then
-                v:Destroy()
-            end
-        end
-    end)
-    if open then toggle() end
-    
-    selectedItems = {} -- Clear the selected items table
-    selectedIndices = {} -- Clear the selected indices table
-    selectedCount = 0 -- Reset the selected count
-end
+	function methods:Clear()
+		table.clear(items)
+		itemContainer:tween{Size = UDim2.new(1, -10, 0, 0)}
+		dropdownContainer:tween({Size = UDim2.new(1, -20, 0, 52)}, function()
+			for i, v in next, itemContainer.AbsoluteObject:GetChildren() do
+				if v.ClassName == "TextButton" then
+					v:Destroy()
+				end
+			end
+		end)
+		if open then toggle() end
+	end
 
 
 	function methods:AddItems(fitems)
